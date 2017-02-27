@@ -1,0 +1,156 @@
+
+
+@mainColor: #63C29E;
+@mainColorDark: @mainColor /1.2;
+@mainColorLight: @mainColor *2.4;
+		// -For RiderParking App- \\
+		/*@mainColor: green;
+		@mainColorDark: darkgreen;
+		@mainColorLight: #C3FDB8;*/
+		// -close RiderParking App- \\
+
+@menuTextColor: #DDDDDD;
+@menuTextHoverColor: #FFFFFF;
+
+@headerBarHeight: 57px;
+
+body {
+	background-color: @mainColorLight;
+}
+
+.appContainer {
+	& > div:not(.headerContainer) {
+		padding-top: @headerBarHeight;
+	}
+	.headerContainer {
+		position: absolute;
+		width: 100%;
+		height: @headerBarHeight;
+		background-color: @mainColor; //.riderparking & { background-color: green; }
+		box-shadow: 0 0 20px rgba(255,255,255,0.16);
+		.menuContainer {
+			display: inline-block;
+			.burger {
+				width: @headerBarHeight;
+				height: @headerBarHeight;
+				//background-color: lightcoral; .riderparking & { background-color: green; }
+				cursor: pointer;
+				& > span {
+					color: @menuTextHoverColor;
+					width: 100%;
+					padding: 8px;
+					text-align: center;
+					pointer-events: none;
+					transition: all 300ms;
+					opacity: 0.7;
+				}
+				&:hover > span,
+				&:focus > span,
+				&:active > span {
+					opacity: 1;
+				}
+			}
+			&.open ul {
+				max-height: 222px;
+			}
+			ul {
+				height: auto;
+				max-height: 0;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				transition: all 300ms ease-out;
+				li {
+					list-style: none;
+					background-color: @mainColorDark; //.riderparking & { background-color: darkgreen; }
+					a {
+						display: inline-block;
+						width: 100%;
+						padding: 16px 18px;
+						text-align: center;
+						font-size: 16px;
+						color: @menuTextColor;
+						transition: all 300ms;
+						border-top: 1px solid rgba(255,255,255,0.3);
+						background-color: rgba(255,255,255,0);
+						&:hover {
+							color: @menuTextHoverColor;
+							text-decoration: none;
+							background-color: rgba(255,255,255,0.12);
+						}
+					}
+				}
+			}
+		}
+		input.search-bar {
+		    position: absolute;
+		    left: @headerBarHeight;
+		    max-width: 444px;
+		    width: calc(100% ~"-" 270px);
+			@media screen and (max-width: 500px) {
+				width: calc(100% ~"-" 200px);
+			}
+		    height: @headerBarHeight - 24;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    border-radius: 3px;
+		    border: none;
+		    box-shadow: none;
+		    text-indent: 6px;
+		    &:focus, &:active {
+		    	box-shadow: none;
+		    	outline: none;
+		    }
+		}
+		.logo {
+			position: absolute;
+			width: 154px;
+			height: @headerBarHeight;
+		    top: 50%;
+		    transform: translateY(-50%);
+			right: 0;
+			color: @menuTextHoverColor;
+			font-size: 40px;
+			background-image: url("/images/clobin.png");
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			@media screen and (max-width: 500px) {
+				width: 118px;
+				height: @headerBarHeight - 15;
+				font-size: 25px;
+			}
+			& > span {
+				color: @menuTextHoverColor;
+				padding: 8px;
+				text-align: center;
+			}
+		}
+	}
+	.mapContainer {
+
+		.slideUpContainer {
+			position: absolute;
+			width: 100%;
+			height: @headerBarHeight * 1.33;
+			padding: 16px;
+			bottom: 0;
+			border-top: 1px solid #CCCCCC;
+			background-color: #FFFFFF;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+			font-size: 18px;
+			.ThumbsUpOrDown {
+				color: #777777;
+				font-size: 14px;
+				& > div {
+					display: inline-block;
+					&:first-child {
+						margin-right: 15px;
+					}
+					& > span {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	}
+}
